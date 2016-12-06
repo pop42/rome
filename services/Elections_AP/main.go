@@ -35,7 +35,6 @@ func main() {
 	wg := &sync.WaitGroup{}
 	wg.Add(1)
 	ticker := time.NewTicker(time.Second * 2)
-
 	races := initRaces()
 
 	go updateVotes(ticker, &races)
@@ -46,23 +45,38 @@ func main() {
 
 func initRaces() Races {
 	return Races{
-		{"23",
-			"Maricopa County Sheriff",
-			"Joe",
-			"Arpaio",
+		{"0",
+			"President of the United States",
+			"Donald",
+			"Trump",
 			"GOP",
-			"1122",
+			"9677",
 			0,
 		},
-		{"23",
-			"Maricopa County Sheriff",
-			"Paul",
-			"Penzone",
-			"DEM",
-			"1123",
+		{"0",
+			"President of the United States",
+			"Hillary",
+			"Clinton",
+			"Dem",
+			"9678",
 			0,
 		},
-	}
+		{"0",
+			"President of the United States",
+			"Gary",
+			"Johnson",
+			"Lib",
+			"9675",
+			0,
+		},
+		{"0",
+			"President of the United States",
+			"Jill",
+			"Stein",
+			"Grn",
+			"9676",
+			0,
+		}}
 }
 
 func updateVotes(ticker *time.Ticker, races *Races) {
@@ -78,7 +92,7 @@ func updateVotes(ticker *time.Ticker, races *Races) {
 
 func publish(r Race) {
 
-	ctx := metadata.NewContext(context.Background(), metadata.MD{"X-User-Id": []string{"MCSubscriber"}})
+	ctx := metadata.NewContext(context.Background(), metadata.MD{"X-User-Id": []string{"Elections_AP"}})
 
 	msg := client.NewPublication("go.micro.srv.Notekeeper.Race", &proto.Race{
 		RaceID:      r.RaceID,
@@ -88,7 +102,7 @@ func publish(r Race) {
 		Party:       r.Party,
 		CandidateID: r.CandidateID,
 		VoteCount:   r.VoteCount,
-		Source:      "Maricopa County",
+		Source:      "AP",
 	})
 
 	if err := client.Publish(ctx, msg); err != nil {

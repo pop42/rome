@@ -43,15 +43,7 @@ services:
             - "8085:3000"
         depends_on:
             - postgresdb
-            - nats                
-    apsubscriber:
-        build:
-            dockerfile: ./services/APSubscriber/Dockerfile
-            context: ./
-        command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222
-        restart: always
-        depends_on:
-            - nats
+            - nats  
     notekeeper:
         build:
             dockerfile: ./services/Notekeeper/Dockerfile
@@ -59,18 +51,27 @@ services:
         restart: always
         command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222
         depends_on:
-            - nats            
-    sossubscriber:
+            - nats                                      
+    elections_ap:
         build:
-            dockerfile: ./services/SosSubscriber/Dockerfile
+            dockerfile: ./services/Elections_AP/Dockerfile
             context: ./
         command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222
         restart: always
         depends_on:
             - nats
-    mcsubscriber:
+  
+    elections_sos:
         build:
-            dockerfile: ./services/MCSubscriber/Dockerfile
+            dockerfile: ./services/Elections_SOS/Dockerfile
+            context: ./
+        command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222
+        restart: always
+        depends_on:
+            - nats
+    elections_mc:
+        build:
+            dockerfile: ./services/Elections_MC/Dockerfile
             context: ./
         command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222
         restart: always

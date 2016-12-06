@@ -77,7 +77,7 @@ func updateVotes(ticker *time.Ticker, races *Races) {
 
 func publish(r Race) {
 
-	ctx := metadata.NewContext(context.Background(), metadata.MD{"X-User-Id": []string{"SosSubscriber"}})
+	ctx := metadata.NewContext(context.Background(), metadata.MD{"X-User-Id": []string{"Elections_SOS"}})
 
 	msg := client.NewPublication("go.micro.srv.Notekeeper.Race", &proto.Race{
 		RaceID:      r.RaceID,
