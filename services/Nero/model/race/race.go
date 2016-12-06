@@ -14,8 +14,8 @@ type Item struct {
 	First       string `db:"firstname" json:"firstName"`
 	Last        string `db:"lastname" json:"lastName"`
 	Party       string `db:"party" json:"party"`
-	CandidateID string `db:"candidateID" json:"candidateID"`
-	VoteCount   int32  `db:"voteCount" json:"voteCount"`
+	CandidateID string `db:"candidateid" json:"candidateID"`
+	VoteCount   int32  `db:"votecount" json:"voteCount"`
 	Source      string `db:"source" json:"source"`
 }
 
@@ -37,4 +37,11 @@ func List(db Connection) ([]Item, bool, error) {
     SELECT *
     FROM %v`, table))
 	return result, err == sql.ErrNoRows, err
+}
+
+// Wipeout will delete all race items
+func Wipeout(db Connection) (err error) {
+	_, err = db.Exec(fmt.Sprintf(`DELETE FROM %v `, table))
+
+	return err
 }

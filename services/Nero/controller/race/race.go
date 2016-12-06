@@ -27,6 +27,7 @@ func Load() {
 		IndentJSON: true,
 	})
 	router.Get(url, Index)
+	router.Get(url+"/wipeout", Wipeout)
 	// router.Get(url+"/{id}", Show)
 }
 
@@ -46,6 +47,19 @@ func Index(w http.ResponseWriter, req *http.Request) {
 	}
 	r.JSON(w, http.StatusOK, items)
 
+}
+
+// Wipeout will wipeout the race table
+func Wipeout(w http.ResponseWriter, req *http.Request) {
+	c := util.Context(w, req)
+	err := race.Wipeout(c.DB)
+
+	if err != nil {
+		log.Println("Error wiping out db: ", err)
+		r.JSON(w, http.StatusInternalServerError, apiError{"Internal Server Error", http.StatusInternalServerError})
+	}
+
+	r.JSON(w, http.StatusOK, map[string]string{"Message": "Table is empty now"})
 }
 
 // // Show displays a single item.
