@@ -1,0 +1,124 @@
+hash: 3cc8c54599ab8aa1f22de024f34a65afbeedfbce1277a4ff4442cd09f7d8411b
+updated: 2016-12-06T11:15:44.856050148-07:00
+imports:
+- name: github.com/bluefoxcode/goplay-api
+  version: f8367ffaa2c2f6c2dcb8de85feeb029240ce0fec
+  subpackages:
+  - controller
+  - controller/hero
+  - lib/boot
+  - lib/router
+  - lib/util
+  - model/hero
+- name: github.com/golang/protobuf
+  version: 8ee79997227bf9b34611aee7946ae64735e6fd93
+  subpackages:
+  - proto
+- name: github.com/gorilla/context
+  version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
+- name: github.com/gorilla/handlers
+  version: 3a5767ca75ece5f7f1440b1d16975247f8d8b221
+- name: github.com/gorilla/mux
+  version: 757bef944d0f21880861c2dd9c871ca543023cba
+- name: github.com/gorilla/websocket
+  version: e8f0f8aaa98dfb6586cbdf2978d511e3199a960a
+- name: github.com/hashicorp/consul
+  version: 4dc8bb142657631116d907f23a225d5503d88393
+  subpackages:
+  - api
+  - watch
+- name: github.com/hashicorp/go-cleanhttp
+  version: ad28ea4487f05916463e2423a55166280e8254b5
+- name: github.com/hashicorp/serf
+  version: f679d7594a349263f6118db40d87122d3a474e7d
+  subpackages:
+  - coordinate
+- name: github.com/jmoiron/sqlx
+  version: 43975e693e7ab5df0ba436482a697b7c2bf6a87e
+  subpackages:
+  - reflectx
+- name: github.com/lib/pq
+  version: 4a82388ebc5138c8289fe9bc602cb0b3e32cd617
+  subpackages:
+  - oid
+- name: github.com/micro/cli
+  version: 3d2263bb092286dde294a31049c92665f8373820
+- name: github.com/micro/go-micro
+  version: c289f6acaa54cc07079762681ead39bc23a91dc4
+  subpackages:
+  - broker
+  - broker/http
+  - client
+  - cmd
+  - codec
+  - codec/jsonrpc
+  - codec/protorpc
+  - errors
+  - metadata
+  - registry
+  - registry/consul
+  - registry/mdns
+  - selector
+  - selector/cache
+  - server
+  - server/debug
+  - server/debug/proto
+  - transport
+  - transport/http
+- name: github.com/micro/go-plugins
+  version: 67d69ce6c3589a4e0c001376690bca905685ac7a
+  subpackages:
+  - broker/nats
+  - registry/nats
+  - transport/nats
+- name: github.com/micro/mdns
+  version: cdf30746f9f70dc7a366d3d885792a092fd83102
+- name: github.com/micro/micro
+  version: 8e10e4336aa03f8f7e0d7e73d25daec6710603cf
+  subpackages:
+  - car
+  - internal/handler
+  - internal/helper
+  - internal/server
+  - internal/stats
+  - plugin
+  - web
+- name: github.com/micro/misc
+  version: 677e2a0beb40a3dd7418548fe0cdc661e2922859
+  subpackages:
+  - lib/tls
+- name: github.com/miekg/dns
+  version: 271c58e0c14f552178ea321a545ff9af38930f39
+- name: github.com/mitchellh/hashstructure
+  version: b098c52ef6beab8cd82bc4a32422cf54b890e8fa
+- name: github.com/nats-io/go-nats
+  version: 6b6bf392d34d01f57cc563ae123f00c13778bd57
+  subpackages:
+  - encoders/builtin
+  - util
+- name: github.com/nats-io/nats
+  version: 6b6bf392d34d01f57cc563ae123f00c13778bd57
+- name: github.com/nats-io/nuid
+  version: 289cccf02c178dc782430d534e3c1f5b72af807f
+- name: github.com/pborman/uuid
+  version: 3d4f2ba23642d3cfd06bd4b54cf03d99d95c0f1b
+- name: github.com/serenize/snaker
+  version: 543781d2b79bd95c51ffe70e70a55c946ca211ff
+- name: github.com/unrolled/render
+  version: 526faf80cd4b305bb8134abea8d20d5ced74faa6
+- name: github.com/urfave/negroni
+  version: cd9734011043904139c24dbad9a71b21f1586f36
+- name: golang.org/x/net
+  version: 4971afdc2f162e82d185353533d3cf16188a9f4e
+  subpackages:
+  - bpf
+  - context
+  - internal/iana
+  - internal/netreflect
+  - ipv4
+  - ipv6
+- name: google.golang.org/grpc
+  version: 708a7f9f3283aa2d4f6132d287d78683babe55c8
+  subpackages:
+  - metadata
+testImports: []

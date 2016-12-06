@@ -1,0 +1,98 @@
+version: '2'
+services:
+    nats:
+        image: 'nats:0.9.4'
+        entrypoint: "/gnatsd -DV"
+        ports:
+            - "4222:4222"        
+            - "8222:8222"
+    postgresdb:
+        image: 'postgres'
+        environment:
+            POSTGRES_PASSWORD: docker
+            POSTGRES_USER: docker
+        restart: always 
+    nero:
+        build:
+            dockerfile: ./services/Nero/Dockerfile
+            context: ./
+        command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222 nero
+        restart: always
+        environment:
+            - DATABASE_URL=postgres://docker:docker@postgresdb/postgres?sslmode=disable
+            - PORT=3000
+        links:
+            - postgresdb
+        ports:
+            - "8083:3000"
+        depends_on:
+            - postgresdb
+            - nats        
+    # caesar:
+    #     build:
+    #         dockerfile: ./services/Caesar/Dockerfile
+    #         context: ./
+    #     command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222 caesar
+    #     restart: always
+    #     environment:
+    #         - DATABASE_URL=postgres://docker:docker@postgresdb/postgres?sslmode=disable
+    #         - PORT=3000
+    #     links:
+    #         - postgresdb
+    #     ports:
+    #         - "8085:3000"
+    #     depends_on:
+    #         - postgresdb
+    #         - nats                
+    # apsubscriber:
+    #     build:
+    #         dockerfile: ./services/APSubscriber/Dockerfile
+    #         context: ./
+    #     command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222
+    #     restart: always
+    #     depends_on:
+    #         - nats
+    # notekeeper:
+    #     build:
+    #         dockerfile: ./services/Notekeeper/Dockerfile
+    #         context: ./
+    #     restart: always
+    #     command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222
+    #     depends_on:
+    #         - nats            
+    # sossubscriber:
+    #     build:
+    #         dockerfile: ./services/SosSubscriber/Dockerfile
+    #         context: ./
+    #     command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222
+    #     restart: always
+    #     depends_on:
+    #         - nats
+    # mcsubscriber:
+    #     build:
+    #         dockerfile: ./services/MCSubscriber/Dockerfile
+    #         context: ./
+    #     command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222
+    #     restart: always
+    #     depends_on:
+    #         - nats
+    # sidecar:
+    #     build:
+    #         dockerfile: ./services/Sidecar/Dockerfile
+    #         context: ./
+    #     command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222 sidecar
+    #     restart: always
+    #     ports:
+    #         - "8081:8081"
+    #     depends_on:
+    #         - nats
+    # web:
+    #     build:
+    #         dockerfile: ./services/web/Dockerfile
+    #         context: ./
+    #     command: --broker nats --registry nats --transport nats --broker_address nats:4222 --registry_address nats:4222 --transport_address nats:4222 web
+    #     restart: always
+    #     ports:
+    #         - "8082:8082"
+    #     depends_on:
+    #         - nats            

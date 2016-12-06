@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package go.srv.Notekeeper;
+
+message Race {
+    string raceID = 1;
+    string raceName = 2;
+    string first = 3;
+    string last = 4;
+    string party = 5;
+    string candidateID = 6;
+    int32 voteCount = 7;
+    string source = 8;
+}
+

@@ -1,0 +1,19 @@
+package: github.com/bluefoxcode/rome
+import:
+- package: github.com/micro/cli
+- package: github.com/micro/go-micro
+  subpackages:
+  - client
+  - cmd
+  - metadata
+  - server
+- package: github.com/micro/go-plugins
+  subpackages:
+  - broker/nats
+  - registry/nats
+  - transport/nats
+- package: github.com/micro/micro
+  subpackages:
+  - car
+- package: github.com/nats-io/nats 
+- package: github.com/bluefoxcode/rome
