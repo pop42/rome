@@ -2,7 +2,7 @@
 
 A sample system using micro and go-micro with NATS to show a series of microservices working in tandem.
 
-This example involves a heavy use of docker bringing together 10 seperate instances. 
+This example involves a heavy use of docker bringing together 10 separate instances. 
 
 The sources are not using real or even real-ish data as the purpose of this demo is to demonstrate multiple microservices working together, not a valid election data display system.
 
