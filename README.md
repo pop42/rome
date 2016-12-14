@@ -46,11 +46,14 @@ Caesar is listening on the go.db.Race.post channel.  When it sees an update, it 
 
 Prerequisites:
 * docker
+* glide
 
 
-1. First you clone the repo.  
-2. Then you CD into it and type `docker-compose build` to build the containers.  
-3. Then type `docker-compose up` to start it.
+1. First you clone the repo into your go src github.com directory
+2. cd into it
+3. Type `glide install`
+2. Type `docker-compose build` to build the containers.  
+3. Type `docker-compose up` to start it.
 
 
 
